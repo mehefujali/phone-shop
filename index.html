@@ -8,6 +8,22 @@
 
       <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.11/dist/full.min.css" rel="stylesheet" type="text/css" />
       <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+            .hero {
+                  transition: .5s;
+                  transition-timing-function: ease;
+
+                  &:hover {
+                        filter: drop-shadow(5px 10px 5px rgba(0, 0, 0, 0.397));
+
+                        transform: scale(1.5) rotate(-5deg);
+
+                  }
+
+
+
+            }
+      </style>
 
 </head>
 
@@ -31,7 +47,7 @@
                                           <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                                                 <div class="w-10 rounded-full">
                                                       <img alt="Tailwind CSS Navbar component"
-                                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                                            src="https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png" />
                                                 </div>
                                           </div>
                                           <ul tabindex="0"
@@ -84,7 +100,7 @@
                         </div>
                         <!-- image part  -->
                         <div>
-                              <img class="w-full" src="./assets/header phone.png" alt="">
+                              <img class="w-full hero" src="./assets/header phone.png" alt="">
                         </div>
                   </div>
             </section>
@@ -92,7 +108,7 @@
       </header>
       <!-- main section  -->
       <main>
-            <section>
+            <section class=" container mx-auto">
 
             </section>
       </main>
