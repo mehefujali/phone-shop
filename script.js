@@ -1,17 +1,20 @@
-const lodeData = (id = 12) => {
-      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : 12}`)
+const lodeData = (id = 'apple', input) => {
+      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : a}`)
             .then(res => res.json())
-            .then(data => displayAllMobileData(data.data))
+            .then(data => displayAllMobileData(data.data, id))
             .catch(err => console.error(err))
+      console.log(input);
+
 }
 
 lodeData()
 
 
 const searchInput = document.getElementById('searchInput')
-searchInput.addEventListener('keyup', (event) => {
+searchInput.addEventListener('keyup', () => {
       lodeData(searchInput.value)
 })
+lodeData(13)
 
 // {
 //       "brand": "Apple ",
@@ -22,14 +25,33 @@ searchInput.addEventListener('keyup', (event) => {
 
 
 
-const displayAllMobileData = (data) => {
+const displayAllMobileData = (data, input) => {
+      const sliceData = data.slice(0, 16)
+
+
 
       const mobileCards = document.getElementById('cards')
+      console.log(sliceData.length);
       mobileCards.innerHTML = ``
-      data.map(phone => {
+      if (sliceData.length == 0) {
+            const h1 = document.createElement('h1')
+            // h1.classList = " text-3xl text-center font-bold"
+            // mobileCards.appendChild(h1)
+            mobileCards.innerText = `${input} No data`
+            mobileCards.classList.add("text-4xl", "text-center", "font-bold")
+            mobileCards.classList.remove('grid')
+
+            return
+      }
+      else {
+            mobileCards.classList.remove("text-4xl", "text-center", "font-bold")
+            mobileCards.classList.add('grid')
+      }
+
+      sliceData.map(phone => {
             const { brand, phone_name, slug, image } = phone
             const phoneCard = document.createElement('div')
-            phoneCard.classList = "w-full h-full border flex flex-col justify-between  gap-5 text-start p-6 rounded-lg  shadow-md"
+            phoneCard.classList = "w-full w-10/12 mx-auto md:w-full h-full border flex flex-col justify-between  gap-5 text-start p-6 rounded-lg  shadow-md"
             phoneCard.innerHTML = `
                    <div class=" flex justify-center"> <image  src="${image}"></div>
                   <div>
