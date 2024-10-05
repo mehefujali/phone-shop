@@ -3,12 +3,99 @@ const lodeData = (id = 'apple', input) => {
             .then(res => res.json())
             .then(data => displayAllMobileData(data.data, id))
             .catch(err => console.error(err))
-      console.log(input);
 
+
+}
+const showDetels = (slug) => {
+      console.log(slug);
+
+      fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
+            .then(res => res.json())
+            .then(data => displayModal(data.data))
 }
 
 lodeData()
 
+// {
+//       "status": true,
+//       "data": {
+//         "mainFeatures": {
+//           "storage": "128GB/256GB/1TB storage, no card slot",
+//           "displaySize": "6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)",
+//           "chipSet": "Apple A15 Bionic (5 nm)",
+//           "memory": "128GB 6GB RAM, 256GB 6GB RAM, 512GB 6GB RAM, 1TB 6GB RAM",
+//           "sensors": [
+//             "Face ID",
+//             "accelerometer",
+//             "gyro",
+//             "proximity",
+//             "compass",
+//             "barometer"
+//           ]
+//         },
+//         "slug": "apple_iphone_13_pro_max-11089",
+//         "name": "iPhone 13 Pro Max",
+//         "releaseDate": "Released 2021, September 24",
+//         "brand": "Apple",
+//         "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg",
+//         "others": {
+//           "WLAN": "Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot",
+//           "Bluetooth": "5.0, A2DP, LE",
+//           "GPS": "Yes, with A-GPS, GLONASS, GALILEO, BDS, QZSS",
+//           "NFC": "Yes",
+//           "Radio": "No",
+//           "USB": "Lightning, USB 2.0"
+//         }
+//       }
+//     }
+
+const displayModal = (data) => {
+      console.log(data.name);
+      document.getElementById('modalCont').innerHTML = `
+       <dialog id="myModal1" class="modal">
+            <div class="modal-box">
+                  <div class=" flex gap-4 justify-between">
+                         <div>
+                         <div class="flex items-center w-full"> <img class="" src="${data.image}"></div>
+                         <h3 class="text-lg font-bold" id="title">${data.name}</h3>
+                         <p class=" text-sm border px-4  rounded-full w-fit mt-2">${data.brand}</p>
+                       </div>
+                    <div>
+                    <p>${data.mainFeatures.storage}</p>
+                     <div class="border border-gray-200"></div>
+                    <p>${data.mainFeatures.displaySize}</p>
+                     <div class="border border-gray-200"></div>
+                    <p>${data.mainFeatures.chipSet}</p>
+                     <div class="border border-gray-200"></div>
+                    <p>${data.mainFeatures.memory}</p>
+                     <div class="border border-gray-200"></div>
+                     <p>${data.others.Bluetooth}</p>
+                     <div class="border border-gray-200"></div>
+                     <p>${data.others.GPS}</p>
+                     <div class="border border-gray-200"></div>
+                     <p>${data.others.NFC}</p>
+                     <div class="border border-gray-200"></div>
+                     <p>${data.others.Radio}</p>
+                     <div class="border border-gray-200"></div>
+                     <p>${data.others.USB}</p>
+                       
+                      </div>
+                  </div>
+                  
+                  <div class="modal-action">
+                        <form method="dialog">
+                              
+                              <button class="btn">Close</button>
+                        </form>
+                  </div>
+            </div>
+      </dialog>
+      `
+
+      myModal1.showModal()
+
+
+}
 
 const searchInput = document.getElementById('searchInput')
 searchInput.addEventListener('keyup', () => {
@@ -34,7 +121,7 @@ const displayAllMobileData = (data, input) => {
 
 
       const mobileCards = document.getElementById('cards')
-      console.log(sliceData.length);
+
       mobileCards.innerHTML = ``
       if (sliceData.length == 0) {
             const h1 = document.createElement('h1')
@@ -65,7 +152,10 @@ const displayAllMobileData = (data, input) => {
                   <div>
                   <h1 class=" font-bold text-2xl">${phone_name}</h1>
                   <p class=" text-sm border px-4  rounded-full w-fit mt-2">${brand}</p>
-                 <div class=" flex w-full justify-end mt-6"> <button class=" btn ">Vew detels</button></div>
+                 <div class="  flex w-full justify-end mt-6"> 
+                <button class="btn" onclick="showDetels('${slug}')">View details</button>
+
+                 </div>
                   </div>
             `
             mobileCards.appendChild(phoneCard)
