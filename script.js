@@ -61,23 +61,15 @@ const displayModal = (data) => {
                          <p class=" text-sm border px-4  rounded-full w-fit mt-2">${data.brand}</p>
                        </div>
                     <div class=" w-6/12">
-                    <p>${data.mainFeatures.storage}</p>
+                    <p>- ${data.mainFeatures.storage}</p>
                
-                    <p>${data.mainFeatures.displaySize}</p>
+                    <p>- ${data.mainFeatures.displaySize}</p>
                     
-                    <p>${data.mainFeatures.chipSet}</p>
+                    <p>- ${data.mainFeatures.chipSet}</p>
                
-                    <p>${data.mainFeatures.memory}</p>
+                    <p>- ${data.mainFeatures.memory}</p>
                      <div class="border border-gray-200"></div>
-                     <p>${data.others.Bluetooth}</p>
                      
-                     <p>${data.others.GPS}</p>
-                     
-                     <p>${data.others.NFC}</p>
-                    
-                     <p>${data.others.Radio}</p>
-                     
-                     <p>${data.others.USB}</p>
                        
                       </div>
                   </div>
