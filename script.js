@@ -1,5 +1,5 @@
 const lodeData = (id = 'apple', input) => {
-      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : a}`)
+      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : 12}`)
             .then(res => res.json())
             .then(data => displayAllMobileData(data.data, id))
             .catch(err => console.error(err))
@@ -14,6 +14,9 @@ const searchInput = document.getElementById('searchInput')
 searchInput.addEventListener('keyup', () => {
       lodeData(searchInput.value)
 })
+// searchInput.addEventListener('onkeydown', () => {
+//       lodeData(searchInput.value)
+// })
 lodeData(13)
 
 // {
@@ -40,8 +43,8 @@ const displayAllMobileData = (data, input) => {
             mobileCards.innerText = `${input} No data`
             mobileCards.classList.add("text-4xl", "text-center", "font-bold")
             mobileCards.classList.remove('grid')
-
             return
+
       }
       else {
             mobileCards.classList.remove("text-4xl", "text-center", "font-bold")
@@ -53,7 +56,12 @@ const displayAllMobileData = (data, input) => {
             const phoneCard = document.createElement('div')
             phoneCard.classList = "w-full w-10/12 mx-auto md:w-full h-full border flex flex-col justify-between  gap-5 text-start p-6 rounded-lg  shadow-md"
             phoneCard.innerHTML = `
-                   <div class=" flex justify-center"> <image  src="${image}"></div>
+                   <div class=" flex justify-center"> <image style=" transition: .5s;
+                  transition-timing-function: ease;
+
+                  &:hover {
+                        /* filter: drop-shadow(4px 10px 10px rgba(0, 0, 0, 0.39)); */
+                        transform: scale(1.5) rotate(-5deg);"  src="${image}"></div>
                   <div>
                   <h1 class=" font-bold text-2xl">${phone_name}</h1>
                   <p class=" text-sm border px-4  rounded-full w-fit mt-2">${brand}</p>
