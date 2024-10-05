@@ -1,11 +1,17 @@
-const lodeData = (id = 'apple', input) => {
+const lodeData = (id = 'samsung', sowall) => {
       fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : 12}`)
             .then(res => res.json())
-            .then(data => displayAllMobileData(data.data, id))
+            .then(data => displayAllMobileData(data.data, id, sowall))
             .catch(err => console.error(err))
 
 
+
 }
+
+// const sowData = (data) => {
+
+// }
+
 const showDetels = (slug) => {
       console.log(slug);
 
@@ -15,6 +21,7 @@ const showDetels = (slug) => {
 }
 
 lodeData()
+
 
 // {
 //       "status": true,
@@ -88,10 +95,20 @@ const displayModal = (data) => {
 
 
 }
-
 const searchInput = document.getElementById('searchInput')
+
+document.getElementById('sowAllBtn').addEventListener('click', () => {
+
+      lodeData(searchInput.value, true)
+      document.getElementById('sowAllBtn').classList.add('hidden')
+
+
+})
+
+
 searchInput.addEventListener('keyup', () => {
       lodeData(searchInput.value)
+      document.getElementById('sowAllBtn').classList.remove('hidden')
 })
 // searchInput.addEventListener('onkeydown', () => {
 //       lodeData(searchInput.value)
@@ -107,8 +124,16 @@ lodeData(13)
 
 
 
-const displayAllMobileData = (data, input) => {
-      const sliceData = data.slice(0, 16)
+const displayAllMobileData = (data, input, sowall) => {
+
+      let sliceData;
+
+      if (sowall) {
+            sliceData = data
+      }
+      else {
+            sliceData = data.slice(0, 16)
+      }
 
 
 
