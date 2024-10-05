@@ -1,5 +1,5 @@
 const lodeData = (id = 'samsung', sowall) => {
-      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : 12}`)
+      fetch(`https://openapi.programming-hero.com/api/phones?search=${id ? id : "sam"}`)
             .then(res => res.json())
             .then(data => displayAllMobileData(data.data, id, sowall))
             .catch(err => console.error(err))
