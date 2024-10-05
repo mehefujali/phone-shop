@@ -54,29 +54,29 @@ const displayModal = (data) => {
       document.getElementById('modalCont').innerHTML = `
        <dialog id="myModal1" class="modal">
             <div class="modal-box">
-                  <div class=" flex gap-4 justify-between">
+                  <div class=" flex gap-4 justify-between flex-col md:flex-row">
                          <div>
-                         <div class="flex items-center w-full"> <img class="" src="${data.image}"></div>
+                        <img class="" src="${data.image}">
                          <h3 class="text-lg font-bold" id="title">${data.name}</h3>
                          <p class=" text-sm border px-4  rounded-full w-fit mt-2">${data.brand}</p>
                        </div>
-                    <div>
+                    <div class=" w-6/12">
                     <p>${data.mainFeatures.storage}</p>
-                     <div class="border border-gray-200"></div>
+               
                     <p>${data.mainFeatures.displaySize}</p>
-                     <div class="border border-gray-200"></div>
+                    
                     <p>${data.mainFeatures.chipSet}</p>
-                     <div class="border border-gray-200"></div>
+               
                     <p>${data.mainFeatures.memory}</p>
                      <div class="border border-gray-200"></div>
                      <p>${data.others.Bluetooth}</p>
-                     <div class="border border-gray-200"></div>
+                     
                      <p>${data.others.GPS}</p>
-                     <div class="border border-gray-200"></div>
+                     
                      <p>${data.others.NFC}</p>
-                     <div class="border border-gray-200"></div>
+                    
                      <p>${data.others.Radio}</p>
-                     <div class="border border-gray-200"></div>
+                     
                      <p>${data.others.USB}</p>
                        
                       </div>
