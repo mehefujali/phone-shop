@@ -54,7 +54,7 @@ const displayModal = (data) => {
       document.getElementById('modalCont').innerHTML = `
        <dialog id="myModal1" class="modal">
             <div class="modal-box">
-                  <div class=" flex gap-4 justify-between flex-col md:flex-row">
+                  <div class=" flex gap-4 justify-between ">
                          <div>
                         <img class="" src="${data.image}">
                          <h3 class="text-lg font-bold" id="title">${data.name}</h3>
